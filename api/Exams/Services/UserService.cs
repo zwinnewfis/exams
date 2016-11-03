@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exams.Utils;
+using System.IO;
 
 namespace Exams.Services
 {
@@ -11,7 +12,8 @@ namespace Exams.Services
     {
         public void SaveUserResult(string userName, int result)
         {
-            throw new NotImplementedException();
+            var path = IOUtil.GetCurrentAssemblyFolder();
+            File.WriteAllText(Path.Combine(path, userName + ".txt"), string.Format("{0}: {1}", userName, result));
         }
     }
 }
