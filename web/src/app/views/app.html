@@ -1,0 +1,63 @@
+<div class="col-md-6">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Exam name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let exam of exams; let i = index" (click)="onSelect(exam)">
+				<td>{{i}}</td>
+				<td>{{exam.name}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="col-md-6" *ngIf="selectedExam">
+	<form *ngIf="!showResults" #form="ngForm">
+		Selcted exam:<br />
+		<h3>{{selectedExam.name}}</h3>
+		<div class="input-group">
+			<span class="input-group-addon" id="basic-addon1">@</span>
+			<input type="text" class="form-control" name="userName" required [(ngModel)]="userExam.userName" placeholder="First and Last name"
+				aria-describedby="basic-addon1">
+		</div>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Question</th>
+					<th>Option A</th>
+					<th>Option B</th>
+					<th>Option C</th>
+					<th>Answer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let question of selectedExam.questions; let i = index">
+					<td>{{question.name}}</td>
+					<td>{{question.answers[0]}}</td>
+					<td>{{question.answers[1]}}</td>
+					<td>{{question.answers[2]}}</td>
+					<td>
+						<div class="input-group">
+							<select class="form-control" name="select{{i}}" required [(ngModel)]="question.selected">
+                <option></option>
+                <option [value]="0">A</option>
+                <option [value]="1">B</option>
+                <option [value]="2">C</option>
+              </select></div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn btn-action" [disabled]="!form.form.valid" (click)="submitExam()">Submit</button>
+	</form>
+	<div *ngIf="showResults">
+		<div class="alert alert-info" [ngClass]="{'alert-success' : result == '5'}" role="alert">
+			Twoja ocena to:
+			<b>{{result}}</b>
+		</div>
+	</div>
+</div>
