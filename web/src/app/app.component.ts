@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { DataService } from './app.data.service';
 
 export class Question {
   id: number;
@@ -21,12 +21,15 @@ export class UserExam {
 
 @Component({
   selector: 'my-app',
+  providers: [DataService],
   templateUrl: 'app/views/app.html'
 })
-export class AppComponent {
 
+export class AppComponent implements OnInit {
+
+  exams: Array<Exam>;
   selectedExam: Exam;
-  showResults:boolean;
+  showResults: boolean;
   result: string;
 
   userExam: UserExam = {
@@ -34,78 +37,42 @@ export class AppComponent {
     exam: null
   };
 
+  constructor(private _dataService: DataService) { }
+
+  ngOnInit() {
+    this.getAllItems();
+  }
+
+  getAllItems(): void {
+    this._dataService
+      .GetAll()
+      .then((exams: Exam[]) => {
+        this.exams = exams;
+      });
+  }
+
   onSelect(exam: Exam): void {
-    this.selectedExam = exam;
+    this._dataService
+      .GetSingle(exam.id)
+      .then((exam) => {
+        this.selectedExam = exam;
+      });
     this.showResults = false;
   }
 
   submitExam(): void {
     if (this.isExamCompleted()) {
-      this.showResults = true;
-      this.result = "4";
+      this.userExam.exam = this.selectedExam;
+      this._dataService
+        .Check(this.userExam)
+        .then(result => {
+          this.showResults = true;
+          this.result = result;
+        });
     }
   }
 
   isExamCompleted(): boolean {
     return this.selectedExam.questions.every((q) => <any>q.selected != "");
   }
-
-  exams: Array<Exam> = [
-    {
-      id: 1, name: "alamakota", questions: [
-        {
-          id: 0,
-          name: "Test Qirstion 1",
-          answers: [
-            "aaa", "bbb", "ccc"
-          ],
-          selected: null
-        },
-        {
-          id: 0,
-          name: "Test Qirstion 2",
-          answers: [
-            "aaa", "bbb", "ccc"
-          ],
-          selected: null
-        },
-        {
-          id: 0,
-          name: "Test Qirstio22334444",
-          answers: [
-            "1111aaa", "bb12b", "ccc"
-          ],
-          selected: null
-        }
-      ]
-    },
-{
-      id: 1, name: "alamakota2", questions: [
-        {
-          id: 0,
-          name: "Test Qirstion 1",
-          answers: [
-            "aaa", "bbb", "ccc2"
-          ],
-          selected: null
-        },
-        {
-          id: 0,
-          name: "Test Qirstion 2",
-          answers: [
-            "aaa", "bb2b", "ccc"
-          ],
-          selected: null
-        },
-        {
-          id: 0,
-          name: "Test Qirstio22334444",
-          answers: [
-            "11121aaa", "bb12b", "ccc"
-          ],
-          selected: null
-        }
-      ]
-    },
-  ];
 }

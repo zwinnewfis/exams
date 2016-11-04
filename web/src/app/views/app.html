@@ -55,7 +55,7 @@
 		<button class="btn btn-action" [disabled]="!form.form.valid" (click)="submitExam()">Submit</button>
 	</form>
 	<div *ngIf="showResults">
-		<div class="alert alert-info" [ngClass]="{'alert-success' : result == '5'}" role="alert">
+		<div class="alert" [ngClass]="{'alert-success' : result == '5', 'alert-info': result > '2' && result != '5'}" role="alert">
 			Twoja ocena to:
 			<b>{{result}}</b>
 		</div>
