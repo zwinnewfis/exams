@@ -13,5 +13,10 @@ namespace Exams.Utils
         {
             return Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase.Replace("file:///", string.Empty));
         }
+
+        public static string GetCurrentAppDataFolder()
+        {
+            return Path.Combine(GetCurrentAssemblyFolder(), "..", "App_Data");
+        }
     }
 }

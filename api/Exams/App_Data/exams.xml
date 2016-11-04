@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArrayOfExam>
+  <Exam>
+    <Id>1</Id>
+    <Name>Test1</Name>
+  </Exam>
+</ArrayOfExam>

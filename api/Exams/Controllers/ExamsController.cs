@@ -32,6 +32,7 @@ namespace Exams.Controllers
         }
 
         [HttpPost]
+        [Route("")]
         public int CheckExam(UserExam userExam)
         {
             int result = examService.CheckExam(userExam.Exam);

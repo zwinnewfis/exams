@@ -16,7 +16,7 @@ namespace Exams.Services
 
     public class ExamService : IExamService
     {
-        static string path = IOUtil.GetCurrentAssemblyFolder();
+        static string path = IOUtil.GetCurrentAppDataFolder();
 
         public IEnumerable<Exam> GetExams()
         {
@@ -34,7 +34,7 @@ namespace Exams.Services
 
         public int CheckExam(Exam exam)
         {
-            var fileWithAnswersPath = Path.Combine(path, exam.Id + "-answers.xml");
+            var fileWithAnswersPath = Path.Combine(path, exam.Id + "-answers.txt");
             var answers = File.ReadAllLines(fileWithAnswersPath);
             var userAnswers = exam.Questions.Select(q => q.Selected.ToString()).ToArray();
 

@@ -12,7 +12,7 @@ namespace Exams.Services
     {
         public void SaveUserResult(string userName, int result)
         {
-            var path = IOUtil.GetCurrentAssemblyFolder();
+            var path = IOUtil.GetCurrentAppDataFolder();
             File.WriteAllText(Path.Combine(path, userName + ".txt"), string.Format("{0}: {1}", userName, result));
         }
     }
