@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Configuration;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -33,7 +34,8 @@ namespace Exams
         private static void EnableCORS(HttpConfiguration config)
         {
             const string allChar = "*";
-            var cors = new EnableCorsAttribute("http://localhost:3000", allChar, allChar);
+            var host = ConfigurationManager.AppSettings["Host"];
+            var cors = new EnableCorsAttribute(host, allChar, allChar);
             cors.SupportsCredentials = true;
             config.EnableCors(cors);
         }
