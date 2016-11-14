@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './app.data.service';
+const Template = require('./views/app.html');
 
 export class Question {
   id: number;
@@ -22,7 +23,7 @@ export class UserExam {
 @Component({
   selector: 'my-app',
   providers: [DataService],
-  templateUrl: 'app/views/app.html'
+  templateUrl: Template
 })
 
 export class AppComponent implements OnInit {
