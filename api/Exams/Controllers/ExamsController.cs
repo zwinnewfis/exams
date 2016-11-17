@@ -1,6 +1,9 @@
 ﻿using Exams.Models;
 using Exams.Services;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace Exams.Controllers
@@ -36,7 +39,25 @@ namespace Exams.Controllers
         public int CheckExam(UserExam userExam)
         {
             int result = examService.CheckExam(userExam.Exam);
-            userService.SaveUserResult(userExam.UserName, result);
+            userService.SaveUserResult(userExam, result);
+            return result;
+        }
+
+        [HttpGet]
+        [Route("results")]
+        public HttpResponseMessage GetResults()
+        {
+            var bytes = userService.GetResults();
+            var result = new HttpResponseMessage(HttpStatusCode.OK)
+                           {
+                               Content = new ByteArrayContent(bytes)
+                           };
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                                                        {
+                                                            FileName = "results.zip"
+                                                        };
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+
             return result;
         }
     }

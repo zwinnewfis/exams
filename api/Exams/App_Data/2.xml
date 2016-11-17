@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Exam>
+  <Id>2</Id>
+  <Name>Egzamin 16.11.2016</Name>
+  <Questions>
+    <Question>
+      <Id>1</Id>
+      <Name>Co wyświetli się na ekranie? Console.WriteLine("AlaMaPsa");</Name>
+      <Answers>
+        <string>AlaMaPsa</string>
+        <string>alamapsa</string>
+        <string>Nic, błąd kompilacji</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>2</Id>
+      <Name>Styl span { color: black; } ustawi</Name>
+      <Answers>
+        <string>Kolor tła elementu ‘span’ na czarny</string>
+        <string>Kolor tekstu elementu ‘span’ na czarny</string>
+        <string>Błąd, kolory należy podawać w formacie szesnastkowym, np. #000000</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>3</Id>
+      <Name>var list = new List&lt;int&gt;();list.Add("12");</Name>
+      <Answers>
+        <string>Błąd kompilacji</string>
+        <string>Doda liczbę "12" do listy</string>
+        <string>Błąd, słówko "var" w tym miejscu jest niedozwolone</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>4</Id>
+      <Name>Który zestaw metod HTTP zawiera tylko rzeczywiście istniejące?</Name>
+      <Answers>
+        <string>GET, PUT, INSERT</string>
+        <string>GET, DELETE, INSERT</string>
+        <string>GET, POST, DELETE</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>5</Id>
+      <Name>Jak pobrać aktualną datę w C#?</Name>
+      <Answers>
+        <string>DateTime.Now</string>
+        <string>Date.getCurrentDate()</string>
+        <string>System.CurrentDate</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>6</Id>
+      <Name>Który atrybut nad klasą Controller w Web.API sprawi, że jego zasoby będą dostępne pod adresem "exams" (np "exams/1", "exams/test" itd)</Name>
+      <Answers>
+        <string>[Base("exams")]</string>
+        <string>[Link("exam")]</string>
+        <string>[RoutePrefix("exams")]</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>7</Id>
+      <Name>Jakiej klasy można użyć do serializacji obiektów do XML?</Name>
+      <Answers>
+        <string>XmlSerializer</string>
+        <string>SerializeToXmlClass</string>
+        <string>SerializableXml</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>8</Id>
+      <Name>Fałszywe zdanie o TypeScript to...</Name>
+      <Answers>
+        <string>Można go użyć do pisania aplikacji w Angular2</string>
+        <string>Napisano w nim oprogramowanie dla Apollo11</string>
+        <string>Jest nadzbiorem JavaScriptu, "kompiluje" się do JavaScriptu</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>9</Id>
+      <Name>Każda klasa w C# dziedziczy po...</Name>
+      <Answers>
+        <string>BaseType</string>
+        <string>Class</string>
+        <string>Object</string>
+      </Answers>
+    </Question>
+    <Question>
+      <Id>10</Id>
+      <Name>By łańcuch "123" użyć jako liczbę (int), nalezy wykonać</Name>
+      <Answers>
+        <string>int x = (int)"123";</string>
+        <string>int x = int.Deserialize("123");</string>
+        <string>int x = int.Parse("123");</string>
+      </Answers>
+    </Question>
+  </Questions>
+</Exam>

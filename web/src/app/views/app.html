@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-12">
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -7,14 +7,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let exam of exams; let i = index" (click)="onSelect(exam)">
+			<tr class="click" *ngFor="let exam of exams; let i = index" (click)="onSelect(exam)">
 				<td>{{i}}</td>
 				<td>{{exam.name}}</td>
 			</tr>
 		</tbody>
 	</table>
 </div>
-<div class="col-md-6" *ngIf="selectedExam">
+<div class="col-md-12" *ngIf="selectedExam">
 	<form *ngIf="!showResults" #form="ngForm">
 		Selcted exam:<br />
 		<h3>{{selectedExam.name}}</h3>

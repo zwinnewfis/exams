@@ -2,6 +2,10 @@
 <ArrayOfExam>
   <Exam>
     <Id>1</Id>
-    <Name>Test1</Name>
+    <Name>Testowy egzamin</Name>
+  </Exam>
+  <Exam>
+    <Id>2</Id>
+    <Name>Egzamin 16.11.2016</Name>
   </Exam>
 </ArrayOfExam>
