@@ -35,7 +35,7 @@ namespace Exams
         {
             const string allChar = "*";
             var host = ConfigurationManager.AppSettings["Host"];
-            var cors = new EnableCorsAttribute("*", allChar, allChar);
+            var cors = new EnableCorsAttribute(host, allChar, allChar);
             cors.SupportsCredentials = true;
             config.EnableCors(cors);
         }
