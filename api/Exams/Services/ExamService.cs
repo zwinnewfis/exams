@@ -50,10 +50,6 @@ namespace Exams.Services
                 {
                     okCounter++;
                 }
-                else
-                {
-                    break;
-                }
             }
 
             double percentage = okCounter * 100 / answers.Length;
